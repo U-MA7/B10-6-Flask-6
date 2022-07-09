@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'layout.html' %}
+    {% block content %}
+
+    <script type="text/javascript" src="/static/js/script.js?q={{time_stamp}}"></script>
+    <h3>このプロフィールを削除しますか？</h3>
+
+    <form action='/delete/{{ user.id }}' method='POST'>
+    <input type='hidden' name='id' value={{ user.id }}>
+        <p>名前: {{ user.name }}</p>
+        <p>年齢: {{ user.age }}</p>
+        <p>性別: {{ user.sex }}</p>
+        <!--<p><input type='submit' name='削除' value='実行'></p>-->
+        <p><button class="btn btn-primary" onClick = "return checkDelete()">削除</button></p>
+    </form>
+
+    <p><button onclick='history.back()'>やっぱりやめる</button</p>
+
+    {% endblock %}
+</body>
+</html>
